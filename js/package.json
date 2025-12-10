@@ -1,0 +1,9 @@
+{
+  "name": "anira-web-mono",
+  "version": "1.0.0",
+  "author": "Anton von Raumer",
+  "scripts": {
+    "build": "pnpm --filter anira-web build && pnpm --filter anira-web-benchmarks build",
+    "dev": "pnpm --filter demo dev"
+  }
+}

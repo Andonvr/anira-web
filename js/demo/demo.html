@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anira Web</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="coi-serviceworker.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Demo</h1>
+      <span>
+        This Demo plays an audio file, runs it through a neural network, and plays the
+        resulting audio in real time. The neural network is in this case a simple gain
+        effect. The slider controls one of the input values of the neural network, and
+        thus the signal returned by the neural network.
+      </span>
+      <div class="buttons-wrapper">
+        <button id="ctrl-btn">Play</button>
+      </div>
+      <div class="controls-wrapper">
+        <label for="gain-slider" id="gain-label">Gain: 1.00</label>
+        <input type="range" id="gain-slider" min="0" max="2" step="0.01" value="1" />
+      </div>
+    <script type="module" src="/src/usageExample.ts"></script>
+  </body>
+</html>

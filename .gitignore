@@ -1,0 +1,7 @@
+.cache/clangd/**
+modules/**
+out/**
+js/**/wasm/**
+js/**/dist/**
+benchmarks/**
+src/benchmarks/models/

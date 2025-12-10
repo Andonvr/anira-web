@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anira Web</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="coi-serviceworker.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Benchmarks</h1>
+      <span>
+        The benchmark suite runs in the background once you click "Start Benchmark".
+        Progress is logged to the console. Once the benchmark is complete, you can
+        download the results as a log file by clicking "Download Results".
+      </span>
+      <div class="buttons-wrapper">
+        <button id="start-benchmark-btn">Start Benchmark</button>
+        <button id="download-results-btn" disabled>Download Results</button>
+      </div>
+    </div>
+    <script type="module" src="/src/benchmarks.ts"></script>
+  </body>
+</html>

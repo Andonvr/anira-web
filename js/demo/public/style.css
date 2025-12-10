@@ -1,0 +1,40 @@
+/* Placeholder */
+
+html,
+body {
+  height: 100vh;
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 1rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 1rem;
+}

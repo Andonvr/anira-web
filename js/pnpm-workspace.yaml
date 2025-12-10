@@ -1,0 +1,4 @@
+packages:
+  - 'anira-web'
+  - 'anira-web-benchmarks'
+  - 'demo'

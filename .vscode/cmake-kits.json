@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Emscripten",
+    "toolchainFile": "${workspaceFolder}/modules/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+    "compilers": {
+      "C": "${workspaceFolder}/modules/emsdk/upstream/emscripten/emcc",
+      "CXX": "${workspaceFolder}/modules/emsdk/upstream/emscripten/em++"
+    }
+  }
+]

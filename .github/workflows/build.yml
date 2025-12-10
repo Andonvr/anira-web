@@ -1,0 +1,88 @@
+name: Build Anira-Web
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build
+
+      - name: Set up Emscripten SDK
+        run: ./setup_emscripten.sh
+
+      - name: Configure CMake
+        run: |
+          source modules/emsdk/emsdk_env.sh
+          cmake --preset web
+
+      - name: Build WASM modules
+        run: |
+          source modules/emsdk/emsdk_env.sh
+          cmake --build --preset web
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        working-directory: ./js
+        run: pnpm install
+
+      - name: Build npm packages
+        working-directory: ./js
+        run: pnpm run build
+
+      - name: Build demo
+        working-directory: ./js/demo
+        run: pnpm run build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: js/demo/dist
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: anira-web-build
+          path: |
+            js/anira-web/dist
+            js/anira-web-benchmarks/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

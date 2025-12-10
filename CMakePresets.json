@@ -1,0 +1,84 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 15,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "web",
+      "description": "Build for the web with benchmarks enabled",
+      "hidden": false,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "toolchainFile": "${sourceDir}/modules/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+      "cacheVariables": {
+        "BUILD_BENCHMARK": "ON",
+        "BUILD_WRAPPERS": "ON",
+        "LOCAL_ANIRA": "OFF",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "web-wrappers",
+      "description": "Build for the web with benchmarks enabled",
+      "hidden": false,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "toolchainFile": "${sourceDir}/modules/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+      "cacheVariables": {
+        "BUILD_WRAPPERS": "ON",
+        "LOCAL_ANIRA": "OFF",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "web-benchmarks",
+      "description": "Build for the web with benchmarks enabled",
+      "hidden": false,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "toolchainFile": "${sourceDir}/modules/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+      "cacheVariables": {
+        "BUILD_BENCHMARK": "ON",
+        "LOCAL_ANIRA": "OFF",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "native-benchmarks",
+      "description": "Build native benchmarks",
+      "hidden": false,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_BENCHMARK": "ON",
+        "LOCAL_ANIRA": "OFF",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "web",
+      "configurePreset": "web",
+      "description": "Build web preset"
+    },
+    {
+      "name": "web-wrappers",
+      "configurePreset": "web-wrappers",
+      "description": "Build web-wrappers preset"
+    },
+    {
+      "name": "web-benchmarks",
+      "configurePreset": "web-benchmarks",
+      "description": "Build web-benchmarks preset"
+    },
+    {
+      "name": "native-benchmarks",
+      "configurePreset": "native-benchmarks",
+      "description": "Build native-benchmarks preset"
+    }
+  ]
+}
